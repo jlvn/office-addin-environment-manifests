@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const {fileToUtf8String, writeEnvManifestsTo, fromCwd, tryRequire} = require('./modules/io')
 const {getTemplateManifestVariables, createEnvironmentManifests} = require('./modules/manifests')
 const {tryReadConfig} = require('./modules/config')

@@ -1,5 +1,5 @@
 {
-  "name": "office-add-in-environment-manifests",
+  "name": "office-addin-environment-manifests",
   "version": "0.0.1",
   "description": "Generate office Add-In manifest for different environments based on a template manifest",
   "main": "index.js",
@@ -16,5 +16,6 @@
   "dependencies": {
     "chalk": "^4.1.0",
     "dotenv": "^8.2.0"
-  }
+  },
+  "bin": "./index.js"
 }
