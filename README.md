@@ -1,4 +1,4 @@
-# office add-in environment manifests
+# office Add-In environment manifests
 Generate office Add-In manifest for different environments based on a template manifest
 
 ## How to use
