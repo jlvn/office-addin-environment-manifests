@@ -1,8 +1,12 @@
-const {fileToUtf8String, writeEnvManifestsTo, fromCwd, requireConfig} = require("./modules/io")
-const {getTemplateManifestVariables, createEnvironmentManifests} = require("./modules/manifests")
+const {fileToUtf8String, writeEnvManifestsTo, fromCwd, tryRequire} = require('./modules/io')
+const {getTemplateManifestVariables, createEnvironmentManifests} = require('./modules/manifests')
 const {tryReadConfig} = require('./modules/config')
-const {createEnvironment} = require("./modules/environments");
+const {createEnvironment} = require('./modules/environments')
 const chalk = require('chalk')
+
+const {
+    USER_CONFIG_FILE_PATH
+} = process.env
 
 const generateEnvironmentManifests = async userConfig => {
     const {
@@ -22,13 +26,13 @@ const generateEnvironmentManifests = async userConfig => {
 
 (async () => {
     try {
-        const userConfig = await requireConfig(fromCwd('./envManifests.config'))
+        const userConfig = await tryRequire(fromCwd(USER_CONFIG_FILE_PATH || './environmentManifests.config.js'))
         const warnings = await generateEnvironmentManifests(userConfig)
         for (const warning of warnings) {
-            console.log(`${chalk.bgYellow.black(' WARNING ')} ${chalk.yellow(`${warning.message} '${warning.value}', in environment: '${warning.environment}'`)}`)
+            console.warn(`${chalk.bgYellow.black(' WARNING ')} ${chalk.yellow(`${warning.message} '${warning.value}', in environment: '${warning.environment}'`)}`)
         }
     } catch (e) {
-        console.log(e)
+        console.error(e)
     }
 })()
 

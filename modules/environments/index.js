@@ -1,11 +1,29 @@
 const dotenv = require('dotenv')
-const {fileToUtf8String, fromCwd} = require("../io");
+const {fileToUtf8String, fromCwd} = require('../io')
 
+/***
+ * @typedef {{name: string, config: Object}} Environment
+ */
+
+/***
+ * @typedef {{name: string, path: string}} EnvironmentFile
+ */
+
+/***
+ *
+ * @param name {string}
+ * @param config {Object}
+ * @return Environment
+ */
 const createEnvironment = (name, config = {}) => ({
     name,
     config
 })
 
+/***
+ * @param files {EnvironmentFile[]}
+ * @return {Promise<Environment[]>}
+ */
 const resolveEnvironmentFiles = async files => {
     const environments = []
 

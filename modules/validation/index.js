@@ -1,3 +1,25 @@
+/***
+ * @typedef {{
+ *      key: string,
+ *      value: any | Function | Promise<any>,
+ *      validator: function(value: any): Promise<any>,
+ *      defaultValue?: any,
+ *      optional?: boolean
+ * }} Validation
+ */
+
+/***
+ * @typedef {{
+ *      result: object,
+ *      errors: string[]
+ * }} ValidationResult
+ */
+
+/***
+ *
+ * @param validations {Validation[]}
+ * @return {Promise<ValidationResult>}
+ */
 const validate = validations => new Promise(resolve => {
     const totalErrors = []
     const totalResult = {}
