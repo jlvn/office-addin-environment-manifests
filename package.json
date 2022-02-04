@@ -1,7 +1,7 @@
 {
   "name": "office-addin-environment-manifests",
   "version": "0.0.2",
-  "description": "Generate office Add-In manifest for different environments based on a template manifest",
+  "description": "Generate office Add-In manifest files for different environments based on a template manifest file.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
